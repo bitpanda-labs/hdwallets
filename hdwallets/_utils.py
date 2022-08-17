@@ -58,7 +58,7 @@ def _derive_private_child(
             f"Invalid private key at index {index}, try the next one!"
         )
     privkey_int = int.from_bytes(privkey, "big")
-    k_int = (payload_left_int + privkey_int) % CURVE_ORDER
+    k_int = int((payload_left_int + privkey_int) % CURVE_ORDER)
     if k_int == 0:
         raise BIP32DerivationError(
             f"Invalid private key at index {index}, try the next one!"
